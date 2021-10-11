@@ -11,9 +11,9 @@ El programa está actualmente en la fase de producción en uso constante.
 ### **Requisitos de dependencias npm**
 
 - Proyecto iniciado con `pip` para utilizar paquetes de desarrollo
-- Paquete `auto-py-to-exe` en el entorno de desarrollo para una interfaz d convertido a .exe
-- Paquete `PyQT5` en entrono de producción para el majego de la interfaz gráfica
-- Paquete de `pylint` en entrono de desarrollo como linter para mejor el estilo y escritura del código**
+- Paquete `auto-py-to-exe` en el entorno de desarrollo para convertir el proyeco a .exe
+- Paquete `PyQT5` en entorno de producción para el manejo de la interfaz gráfica
+- Paquete de `pylint` en entorno de desarrollo como linter para mejorar el estilo y escritura del código**
 
 ### **Requisitos de versionamiento git en los branch**
 
@@ -133,4 +133,4 @@ No es necesaria alguna actualización ya que los archivos de desarrollo se compi
 
 ## **Versiones**
 
-- V1.0.0: Proyecto inicial con caracteríscas básica
+- V1.0.0: Proyecto inicial con caracteríscas básicas
