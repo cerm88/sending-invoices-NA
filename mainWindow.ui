@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainWindow</class>
+ <widget class="QMainWindow" name="mainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>475</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>475</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>475</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Envío de Facturas Neurocognitive Academy</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="lblEmail">
+    <property name="geometry">
+     <rect>
+      <x>18</x>
+      <y>33</y>
+      <width>36</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Email:</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblPass">
+    <property name="geometry">
+     <rect>
+      <x>18</x>
+      <y>63</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Password:</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblRutaExcel">
+    <property name="geometry">
+     <rect>
+      <x>18</x>
+      <y>134</y>
+      <width>64</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Ruta Excel:</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblProceso">
+    <property name="geometry">
+     <rect>
+      <x>17</x>
+      <y>240</y>
+      <width>56</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Procesos:</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listProcess">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>240</y>
+      <width>441</width>
+      <height>192</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtEmail">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>30</y>
+      <width>241</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtPass">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>62</y>
+      <width>241</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtExcelPath">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>132</y>
+      <width>455</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnExcelPath">
+    <property name="geometry">
+     <rect>
+      <x>557</x>
+      <y>130</y>
+      <width>25</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>:::</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnRunProcess">
+    <property name="geometry">
+     <rect>
+      <x>224</x>
+      <y>440</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ejecutar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnClearListProcess">
+    <property name="geometry">
+     <rect>
+      <x>299</x>
+      <y>440</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Limpiar</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblRutaRecibos">
+    <property name="geometry">
+     <rect>
+      <x>18</x>
+      <y>164</y>
+      <width>79</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Ruta Recibos:</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtInvoicesPath">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>162</y>
+      <width>455</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnInvoicesPath">
+    <property name="geometry">
+     <rect>
+      <x>557</x>
+      <y>160</y>
+      <width>25</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>:::</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="grpRemGoD">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>581</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Remitente GoDaddy</string>
+    </property>
+    <widget class="QPushButton" name="btnShowPass">
+     <property name="geometry">
+      <rect>
+       <x>334</x>
+       <y>50</y>
+       <width>51</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ver</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="grpDatFact">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>581</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Datos Facturación</string>
+    </property>
+   </widget>
+   <zorder>grpDatFact</zorder>
+   <zorder>grpRemGoD</zorder>
+   <zorder>lblEmail</zorder>
+   <zorder>lblPass</zorder>
+   <zorder>lblRutaExcel</zorder>
+   <zorder>lblProceso</zorder>
+   <zorder>listProcess</zorder>
+   <zorder>txtEmail</zorder>
+   <zorder>txtPass</zorder>
+   <zorder>txtExcelPath</zorder>
+   <zorder>btnExcelPath</zorder>
+   <zorder>btnRunProcess</zorder>
+   <zorder>btnClearListProcess</zorder>
+   <zorder>lblRutaRecibos</zorder>
+   <zorder>txtInvoicesPath</zorder>
+   <zorder>btnInvoicesPath</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
