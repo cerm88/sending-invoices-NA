@@ -1,4 +1,4 @@
-# **Envíos de Facturas NA**
+# **Envíos de Facturas Neurocognitive Academy**
 
 Se basa en mostrar un pequeño programa de escritorio para el envío de facturas a los estudiantes que tienen una suscripción en la Neurocognitive Academy.
 
@@ -6,12 +6,16 @@ Se basa en mostrar un pequeño programa de escritorio para el envío de facturas
 
 El programa está actualmente en la fase de producción en uso constante.
 
+## **Assets del proyecto**
+
+Todos los `assets` lo podrás descargar aquí: [Click Aquí](https://drive.google.com/drive/folders/1DwpBVtMCCW0KHgC8GarRl5dZmuKCiXxV?usp=sharing)
+
 ## **Requisitos para el entorno de desarrollo**
 
-### **Requisitos de dependencias npm**
+### **Requisitos de dependencias pip**
 
 - Proyecto iniciado con `pip` para utilizar paquetes de desarrollo
-- Paquete `auto-py-to-exe` en el entorno de desarrollo para convertir el proyeco a .exe
+- Paquetes `py2exe` y `auto-py-to-exe` en el entorno de desarrollo para convertir el proyeco a .exe
 - Paquete `PyQT5` en entorno de producción para el manejo de la interfaz gráfica
 - Paquete de `pylint` en entorno de desarrollo como linter para mejorar el estilo y escritura del código**
 
@@ -70,6 +74,10 @@ El mensaje del commit debe estar estructurado de la siguiente forma:
 
 ```
 <type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
 ```
 
 El commit contiene los siguientes elementos estructurales en el type:
@@ -84,7 +92,7 @@ El commit contiene los siguientes elementos estructurales en el type:
 - **style:** cambios que no afectan el significado del código (espacios en blanco, formato, punto y coma que faltan, etc.)
 - **test:** agregar pruebas faltantes o corregir pruebas existentes
 
- Se puede agregar un ámbito al tipo de commit para proveer información contextual adicional y se escribe entre paréntesis, ejemplos, `feat(parser): add ability to parse arrays`, `feat(authentication): add autentication users in dashboard`.
+Se puede agregar un ámbito al tipo de commit para proveer información contextual adicional y se escribe entre paréntesis, ejemplos, `feat(parser): add ability to parse arrays`, `feat(authentication): add autentication users in dashboard`.
 
 Ejemplos de commit:
 
@@ -125,11 +133,11 @@ No es necesaria alguna actualización ya que los archivos de desarrollo se compi
 
 ## **Bugs y errores conocidos**
 
-- ...
+Sin bugs y errores conocidos
 
-## **Actualizaciones Pendientes**
+## **Actualizaciones pendientes**
 
-- ...
+Sin actualizaciones pendientes
 
 ## **Versiones**
 
