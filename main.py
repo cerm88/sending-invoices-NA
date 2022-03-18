@@ -5,8 +5,6 @@ import io
 import sys
 import time
 import smtplib
-import winsound
-import threading
 import configparser
 from os import listdir
 from os.path import isfile, join
@@ -15,20 +13,44 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 from PyQt5 import uic, QtGui
 from PyQt5.QtCore import QEventLoop
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QWidget
 import xlrd
-
 
 # Rutas Archivos
 
 directory_path = os.path.dirname(__file__)
-gui_path = os.path.join(directory_path, "mainWindow.ui")
+gui_path = os.path.join(directory_path, "layouts\\main_window.ui")
 config_path = os.path.join(directory_path, "config.ini")
-icon_path = os.path.join(directory_path, "LogoNA.png")
-html_path = os.path.join(directory_path, "BodyInvoiceNA.html")
+icon_path = os.path.join(directory_path, "icons\\logo-NA.png")
+html_path = os.path.join(directory_path, "html\\body-Invoice-NA.html")
 with io.open(file=html_path, mode="r", encoding="utf-8") as html_file:
     message = html_file.read()
     html_file.close()
+
+# Clase Mensaje de error Crítico
+
+class CriticalMessageBox(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QtGui.QIcon(icon_path))
+
+    def show_message(self, title, msgbox):
+        QMessageBox.critical(self, title, msgbox)
+
+# Si no existe el archivo de configuración
+
+if not os.path.exists(config_path):
+    app_msg = QApplication(sys.argv)
+    msg_critical = CriticalMessageBox()
+    msg_critical.show_message(
+        "Error!",
+        "No se encuentra el archivo 'config.ini' para poder iniciar la aplicación!"
+    )
+    app_msg.quit()
+    sys.exit(1)
+
+
+# Extraer valores del archivo de configuración
 
 config = configparser.ConfigParser()
 config.read(config_path)
@@ -39,9 +61,9 @@ excel_path = config["DEFAULT"]["excel_path"]
 invoices_path = config["DEFAULT"]["invoices_path"]
 
 
-# Funciones
+# Función Convierte el Diccioanrio en Json
 
-def make_json_from_data(column_names, row_data): # Convierte el Diccioanrio en Json
+def make_json_from_data(column_names, row_data):
     row_list = []
     for item in row_data:
         json_obj = {}
@@ -50,7 +72,9 @@ def make_json_from_data(column_names, row_data): # Convierte el Diccioanrio en J
         row_list.append(json_obj)
     return row_list
 
-def xls_to_dict(workbook_url):  # Convierte todas las Hojas del libro Excel en Diccionario
+# Función Convierte todas las Hojas del libro Excel en Diccionario
+
+def xls_to_dict(workbook_url):
     workbook_dict = {}
     book = xlrd.open_workbook(workbook_url)
     sheets = book.sheets()
@@ -64,11 +88,6 @@ def xls_to_dict(workbook_url):  # Convierte todas las Hojas del libro Excel en D
         sheet_data = make_json_from_data(columns, rows)
         workbook_dict[sheet.name] = sheet_data
     return workbook_dict
-
-def sound_system(type_sound):
-    # type = "SystemAsterisk" ---> Información
-    # type = "SystemHand" ---> Error
-    winsound.PlaySound(type_sound, winsound.SND_ALIAS)
 
 def list_directory(path):
     return [arch for arch in listdir(path) if isfile(join(path, arch))]
@@ -171,15 +190,12 @@ class Window(QMainWindow):
             invoices_path_process,
         )
         if "" in validation_fields:
-            threading.Thread(target = sound_system, args = ("SystemHand",)).start()
             QMessageBox.critical(self, "Error!", "Una o varias Cajas de Texto están Vacías!")
             return
         if not os.path.exists(excel_path_process):
-            threading.Thread(target = sound_system, args = ("SystemHand",)).start()
             QMessageBox.critical(self, "Error!", "Ruta de Excel no existe!")
             return
         if not os.path.exists(invoices_path_process):
-            threading.Thread(target = sound_system, args = ("SystemHand",)).start()
             QMessageBox.critical(self, "Error!", "Ruta de Recibos no existe!")
             return
         try:
@@ -191,9 +207,8 @@ class Window(QMainWindow):
                 server = smtplib.SMTP_SSL("smtpout.secureserver.net", 465)
                 server.ehlo()
                 server.login(email_from_process, email_pass_process)
-            except:
-                threading.Thread(target = sound_system, args = ("SystemHand",)).start()
-                QMessageBox.critical(self, "Error!", "Ha fallado el inicio de sesión!")
+            except Exception as err:
+                QMessageBox.critical(self, "Error!", str(err).capitalize())
                 return
             # Crear bucle para envío de email
             i = 1
@@ -235,24 +250,13 @@ class Window(QMainWindow):
                             try:
                                 to_addresses = [email_to] + bcc
                                 server.sendmail(msg["From"], to_addresses, msg.as_string())
-                            except:
+                            except Exception as err:
                                 self.listProcess.insertItem(
                                     0,
                                     f"{msg_insert_item} (Fallo de Envío)"
                                 )
-                                err = sys.exc_info()[1]
-                                err = err.args[0]
-                                if err in (550, 552):
-                                    threading.Thread(
-                                        target=sound_system,
-                                        args=("SystemHand",)
-                                    ).start()
-                                    QMessageBox.critical(
-                                        self,
-                                        "Error!",
-                                        f"Error {err}: Ha superado su cuota de envíos de 250!"
-                                    )
-                                    return
+                                QMessageBox.critical(self, "Error!", str(err).capitalize())
+                                return
                             else:
                                 self.listProcess.insertItem(
                                     0,
@@ -268,15 +272,12 @@ class Window(QMainWindow):
                             f"Error ({msg_insert_item} (Sin Recibo)"
                         )
             else:
-                threading.Thread(target = sound_system, args = ("SystemExclamation",)).start()
                 QMessageBox.critical(self, "Atención!", "Directorio de recibos vacío!")
                 return
-        except:
-            threading.Thread(target = sound_system, args = ("SystemHand",)).start()
-            QMessageBox.critical(self, "Error!", "Ha Ocurrido un error!")
+        except Exception as err:
+            QMessageBox.critical(self, "Error!", str(err).capitalize())
         else:
             server.quit()
-            threading.Thread(target = sound_system, args = ("SystemAsterisk",)).start()
             QMessageBox.information(self, "Información!", "El proceso ha finalizado con Éxito!")
 
 if __name__ == "__main__":
