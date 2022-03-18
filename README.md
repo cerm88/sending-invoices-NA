@@ -125,7 +125,7 @@ Referencias:
 
 ## **Instalación y funcionamiento**
 
-No es necesaria alguna actualización ya que los archivos de desarrollo se compilan con `auto-py-to-exe` para convertir el proyecto en un ejecutable para el sistema operativo Windows.
+No es necesaria alguna instalación ya que los archivos de desarrollo se compilan con `auto-py-to-exe` para convertir el proyecto en un ejecutable para el sistema operativo Windows.
 
 ## **Tecnologías Utilizadas**
 - Python Vanilla
